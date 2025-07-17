@@ -5,7 +5,7 @@ import {PORT} from './config.js'
 const app = express()   
 
 app.get('/', async (req, res) => {
-    const [rows] = await pool.query('SELECT * FROM users')
+    const [rows] = await pool.query('SELECT * FROM userss')
     res.send(rows)
 })
 
@@ -15,7 +15,7 @@ app.get('/ping', async (req, res) => {
 })
 
     app.get('/create', async (req, res) => {
-       const result = await pool.query('INSERT INTO users(name)VALUES("jhon")')
+       const result = await pool.query('INSERT INTO userss(name)VALUES("jhon")')
     
     res.json(result)
 })
