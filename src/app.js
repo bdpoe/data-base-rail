@@ -11,12 +11,18 @@ app.use(express.json())
 // Obtener todos los usuarios
 app.get('/api/usuarios', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM usuarios')
+    const [rows] = await pool.query('SELECT * FROM registro')
     res.json(rows)
   } catch (err) {
     res.status(500).json({ error: 'Error al obtener usuarios', details: err.message })
   }
 })
+
+
+
+
+
+
 
 // Insertar un nuevo usuario
 app.post('/api/form', async (req, res) => {
