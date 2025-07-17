@@ -25,12 +25,12 @@ app.get('/', async (req, res) => {
 
 // Insertar un nuevo usuario
 app.post('/api/form', async (req, res) => {
-  const { nombre, apellido, dni } = req.body
+  const { nombre, apellido, dni, correo, mensaje } = req.body;
   try {
     const [result] = await pool.query(
-      'INSERT INTO registro (nombre, apellido, dni) VALUES (?, ?, ?)',
-      [nombre, apellido, dni]
-    )
+      'INSERT INTO usuarios (nombre, apellido, dni, correo, mensaje) VALUES (?, ?, ?, ?, ?)',
+        [nombre, apellido, dni, correo, mensaje]
+        );
     res.json({ message: 'Usuario creado correctamente', id: result.insertId })
   } catch (err) {
     res.status(500).json({ error: 'Error al insertar usuario', details: err.message })
