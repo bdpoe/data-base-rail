@@ -1,4 +1,4 @@
-import { createPool } from "mysql2/promise";
+/*import { createPool } from "mysql2/promise";
 import {
     DB_HOST,
     DB_PASSWORD,
@@ -6,15 +6,19 @@ import {
     DB_PORT,
     DB_USER
 
-} from './config.js'
+} 
+from './config.js'
+*/
 
 
+import pkg from 'pg'
+const { Pool } = pkg
 
-export const pool = createPool({
-    user: DB_USER,
-    password: DB_PASSWORD,
-    host: DB_HOST,
-    port: DB_PORT,
-    database: DB_NAME
+export const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  ssl: true, // Esto es necesario en Railway PostgreSQL
 })
-
