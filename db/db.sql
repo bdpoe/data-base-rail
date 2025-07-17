@@ -3,7 +3,5 @@ CREATE TABLE registro (
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     dni VARCHAR(20) NOT NULL,
-    ALTER TABLE usuarios ADD COLUMN correo VARCHAR(255),
-    ALTER TABLE usuarios ADD COLUMN mensaje TEXT
-
+    
 );
