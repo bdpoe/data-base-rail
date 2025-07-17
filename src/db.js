@@ -11,10 +11,15 @@ from './config.js'
 */
 
 
-import pkg from 'pg'
-const { Pool } = pkg
+import pkg from 'pg';
+const { Pool } = pkg;
 
 export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // <- Aceptar certificados autofirmados
+  },
+
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
