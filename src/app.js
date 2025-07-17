@@ -28,7 +28,7 @@ app.post('/api/form', async (req, res) => {
   const { nombre, apellido, dni } = req.body
   try {
     const [result] = await pool.query(
-      'INSERT INTO usuarios (nombre, apellido, dni) VALUES (?, ?, ?)',
+      'INSERT INTO registro (nombre, apellido, dni) VALUES (?, ?, ?)',
       [nombre, apellido, dni]
     )
     res.json({ message: 'Usuario creado correctamente', id: result.insertId })
