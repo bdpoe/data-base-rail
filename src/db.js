@@ -1,4 +1,4 @@
-/*import { createPool } from "mysql2/promise";
+import { createPool } from "mysql2/promise";
 import {
     DB_HOST,
     DB_PASSWORD,
@@ -8,18 +8,10 @@ import {
 
 } 
 from './config.js'
-*/
 
 
-import pkg from 'pg';
-const { Pool } = pkg;
 
-export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false, // <- Aceptar certificados autofirmados
-  },
-
+export const pool = createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
