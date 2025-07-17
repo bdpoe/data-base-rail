@@ -18,11 +18,10 @@ app.get('/api/usuarios', async (req, res) => {
   }
 })
 
-
-
-
-
-
+app.get('/', async (req, res) => {
+  const [rows] = await pool.query('SELECT * FROM registro');
+  res.json(rows);
+});
 
 // Insertar un nuevo usuario
 app.post('/api/form', async (req, res) => {
