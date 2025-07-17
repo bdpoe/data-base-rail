@@ -11,7 +11,7 @@ app.use(express.json())
 // Obtener todos los usuarios
 app.get('/api/usuarios', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM registro')
+    const [rows] = await pool.query('SELECT * FROM registro2')
     res.json(rows)
   } catch (err) {
     res.status(500).json({ error: 'Error al obtener usuarios', details: err.message })
@@ -19,7 +19,7 @@ app.get('/api/usuarios', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-  const [rows] = await pool.query('SELECT * FROM registro');
+  const [rows] = await pool.query('SELECT * FROM registro2');
   res.json(rows);
 });
 
@@ -28,7 +28,7 @@ app.post('/api/form', async (req, res) => {
   const { nombre, apellido, dni } = req.body
   try {
     const [result] = await pool.query(
-      'INSERT INTO registro (nombre, apellido, dni) VALUES (?, ?, ?)',
+      'INSERT INTO registro2 (nombre, apellido, dni) VALUES (?, ?, ?)',
       [nombre, apellido, dni]
     )
     res.json({ message: 'Usuario creado correctamente', id: result.insertId })
